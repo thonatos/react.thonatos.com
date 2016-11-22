@@ -1,22 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
 
+import { Router, Route, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+
+// style
 import "./less/v2/base.less"
 
-import About from './components/About'
-import about from './reducers'
+// redux
+import { store } from './redux';
 
-const store = createStore(about)
-const rootEl = document.getElementById('root')
+// component
+import { Home, About, Projects } from './components'
 
-const render = () => ReactDOM.render(
-  <About
-    info={store.getState().info}
-    onLOG={(ev, txt) => store.dispatch({ type: 'LOG', ev: ev, txt: txt })}
-    />,
-  rootEl
+// bootstrap
+ReactDOM.render(
+  <Provider store={store}>
+    <Router history={browserHistory}>
+      <Route path='/' component={Home} />
+      <Route path='/projects' component={Projects} />
+      <Route path='/about' component={About} />
+    </Router>
+  </Provider>,
+  document.getElementById('root')
 )
-
-render()
-store.subscribe(render)

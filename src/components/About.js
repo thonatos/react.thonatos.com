@@ -1,25 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+// assets
 import avatar from '../assets/mtt.png'
 import './About.less'
 
 class About extends Component {
 
   render() {
-    const info = this.props.info
+
+    const { about } = this.props
     return (
       <div className="about">
         <img src={avatar} className="avatar" alt="avatar" />
         <article className="detail">
-          <h1>{info.name}</h1>
-          <p>{info.detail.email}<br />
-            {info.detail.career}<br />
-            {info.detail.degree}
+          <h1>{about.name}</h1>
+          <p>{about.detail.email}<br />
+            {about.detail.career}<br />
+            {about.detail.degree}
           </p>
-          <p>{info.detail.description}</p>
+          <p>{about.detail.description}</p>
         </article>
         <ul className="social">
           {
-            info.links.map((obj, index) => {
+            about.links.map((obj, index) => {
               return (
                 <li key={index}>
                   <a href={obj.href} target="_blank">
@@ -35,4 +39,6 @@ class About extends Component {
   }
 }
 
-export default About
+export default connect(state => ({
+  about: state.about
+}))(About)
