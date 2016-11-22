@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_PROJECTS, FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_FAILURE } from './types'
+import { FETCH_PROJECTS, FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_FAILURE } from './actionTypes'
 
 function requestData() {
   return {

@@ -9,7 +9,18 @@ import { Provider } from 'react-redux'
 import "./less/v2/base.less"
 
 // redux
-import { store } from './redux';
+import thunkMiddleware from 'redux-thunk'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import * as reducer from './redux/modules'
+
+const store = createStore(
+    combineReducers({
+        ...reducer,
+        routing: routerReducer
+    }),
+    applyMiddleware(thunkMiddleware)
+)
+
 const history = syncHistoryWithStore(browserHistory, store)
 
 // component

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import * as projectsActions from '../redux/actions';
+import * as projectsActions from '../redux/actions/action'
 
 // assets
 import { Row, Col } from 'antd'
@@ -13,6 +13,7 @@ class Projects extends Component {
     const { projects, dispatch } = this.props
     const actions = bindActionCreators(projectsActions, dispatch)
     actions.fetchProjects('https://api.github.com/users/thonatos/repos')
+    // actions.fetchProjects('http://account.arashivision.com/dtalk/init')
     return (
       <div className="project">
 
