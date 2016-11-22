@@ -1,4 +1,4 @@
-import { FETCH_PROJECTS, FETCH_PROJECTS_SUCCESS } from '../actions'
+import { FETCH_PROJECTS, FETCH_PROJECTS_SUCCESS } from '../actions/types'
 
 const initialState = []
 

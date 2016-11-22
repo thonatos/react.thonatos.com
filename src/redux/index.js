@@ -1,11 +1,16 @@
 import thunkMiddleware from 'redux-thunk'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { routerReducer } from 'react-router-redux'
 
-
-import reducer from './modules/reducer'
+import * as reducer from './modules/reducer'
 import { logger } from './middleware'
 
+console.log(routerReducer)
+
 export const store = createStore(
-    reducer,
-    applyMiddleware(thunkMiddleware,logger)
+    combineReducers({
+        reducer,
+        routing: routerReducer
+    }),
+    applyMiddleware(thunkMiddleware, logger)
 )

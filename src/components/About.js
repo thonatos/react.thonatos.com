@@ -8,9 +8,9 @@ import './About.less'
 class About extends Component {
 
   render() {
-
     const { about } = this.props
     return (
+      <div className="container">
       <div className="about">
         <img src={avatar} className="avatar" alt="avatar" />
         <article className="detail">
@@ -34,6 +34,7 @@ class About extends Component {
             })
           }
         </ul>
+      </div>
       </div>
     )
   }

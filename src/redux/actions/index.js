@@ -1,27 +1,5 @@
 import axios from 'axios'
-
-export const FETCH_PROJECTS = 'FETCH_PROJECTS'
-export const FETCH_PROJECTS_SUCCESS = 'FETCH_PROJECTS_SUCCESS'
-export const FETCH_PROJECTS_FAILURE = 'FETCH_PROJECTS_FAILURE'
-
-const list = [
-  {
-    name: 'github',
-    href: 'https://github.com/MT-Libraries/'
-  },
-  {
-    name: 'weibo',
-    href: 'http://weibo.com/thonatos'
-  },
-  {
-    name: 'hexo',
-    href: 'http://blog.thonatos.com'
-  },
-  {
-    name: 'zhihu',
-    href: 'https://zhuanlan.zhihu.com/a-log-cabin'
-  }
-]
+import { FETCH_PROJECTS, FETCH_PROJECTS_SUCCESS, FETCH_PROJECTS_FAILURE } from './types'
 
 function requestData() {
   return {
@@ -32,7 +10,7 @@ function requestData() {
 function receiveData(json) {
   return {
     type: FETCH_PROJECTS_SUCCESS,
-    data: list
+    data: json
   }
 }
 
@@ -53,10 +31,9 @@ export function fetchProjects(url) {
       responseType: 'json'
     }).then(function (response) {
       dispatch(receiveData(response.data))
+    }).catch(function (response) {
+      dispatch(receiveError(response.data))
     })
-      .catch(function (response) {
-        dispatch(receiveError(response.data))
-      })
 
   }
 }
