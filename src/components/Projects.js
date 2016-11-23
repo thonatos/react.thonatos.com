@@ -9,11 +9,15 @@ import { Row, Col } from 'antd'
 
 class Projects extends Component {
 
-  render() {
-    const { projects, dispatch } = this.props
+  componentDidMount() {
+    const { dispatch } = this.props
     const actions = bindActionCreators(projectsActions, dispatch)
     actions.fetchProjects('https://api.github.com/users/thonatos/repos')
-    // actions.fetchProjects('http://account.arashivision.com/dtalk/init')
+  }
+
+  render() {
+    const { projects } = this.props
+
     return (
       <div className="project">
 
