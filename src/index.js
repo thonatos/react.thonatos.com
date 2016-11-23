@@ -14,17 +14,17 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import * as reducer from './redux/modules'
 
 const store = createStore(
-    combineReducers({
-        ...reducer,
-        routing: routerReducer
-    }),
-    applyMiddleware(thunkMiddleware)
+  combineReducers({
+    ...reducer,
+    routing: routerReducer
+  }),
+  applyMiddleware(thunkMiddleware)
 )
 
 const history = syncHistoryWithStore(browserHistory, store)
 
 // component
-import { About, Projects } from './components'
+import { About, Projects } from './views'
 
 // bootstrap
 ReactDOM.render(
