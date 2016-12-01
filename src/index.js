@@ -1,38 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-
-import { Router, Route, hashHistory } from 'react-router' // browserHistory
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { render } from 'react-dom';
 import { Provider } from 'react-redux'
+import { Router, hashHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+
+import routes from './routes'
+import configureStore from './store/configureStore'
 
 // style
-import "./less/v2/base.less"
+import "./less/common/base.less"
 
-// redux
-import thunkMiddleware from 'redux-thunk'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import * as reducer from './redux/modules'
-
-const store = createStore(
-  combineReducers({
-    ...reducer,
-    routing: routerReducer
-  }),
-  applyMiddleware(thunkMiddleware)
-)
-
+const store = configureStore()
 const history = syncHistoryWithStore(hashHistory, store)
 
-// component
-import { About, Projects } from './views'
-
-// bootstrap
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}>
-      <Route path='/' component={About} />
-      <Route path='/projects' component={Projects} />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
+render(
+    <Provider store={store}>
+        <Router history={history} routes={routes} />
+    </Provider>,
+    document.getElementById('root')
 )

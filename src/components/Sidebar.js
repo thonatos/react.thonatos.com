@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
 import { Menu, Icon } from 'antd'
+
 const SubMenu = Menu.SubMenu
 
 export default class Sidebar extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
     this.state = {
       current: '1'
     }
@@ -30,6 +31,27 @@ export default class Sidebar extends Component {
   render() {
     const styles = this.getStyles()
 
+    const home = [{
+      name: 'Blog',
+      href: 'http://blog.thonatos.com'
+    }, {
+      name: 'Docs',
+      href: 'http://docs.implements.io'
+    }]
+
+    const link = [{
+      name: 'Zhihu',
+      href: 'https://zhuanlan.zhihu.com/a-log-cabin'
+    }, {
+      name: 'Github',
+      href: 'https://github.com/MT-Libraries/'
+    }]
+
+    const about = [{
+      name: 'Weibo',
+      href: 'http://weibo.com/thonatos'
+    }]
+
     return (
       <div className="sidebar">
         <Menu onClick={this.handleClick}
@@ -38,24 +60,35 @@ export default class Sidebar extends Component {
           mode="inline"
           style={styles.menu}
           >
+
           <SubMenu key="home" title={<span><Icon type="home" /><span>Home</span></span>}>
-            <Menu.Item key="1">
-              <a href="http://blog.thonatos.com" target="_blank">Blog</a>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <a href="http://docs.implements.io" target="_blank">Docs</a>
-            </Menu.Item>
+            {
+              home.map((value, key) =>
+                <Menu.Item key={key} >
+                  <a href={value.href} className="link" target="_blank">{value.name}</a>
+                </Menu.Item>
+              )
+            }
           </SubMenu>
+
           <SubMenu key="link" title={<span><Icon type="link" /><span>Link</span></span>}>
-            <Menu.Item key="3">
-              <a href="https://zhuanlan.zhihu.com/a-log-cabin" target="_blank">Zhihu</a>
-            </Menu.Item>
-            <Menu.Item key="4">
-              <a href="https://github.com/MT-Libraries/" target="_blank">Github</a>
-            </Menu.Item>
+            {
+              link.map((value, key) =>
+                <Menu.Item key={key} >
+                  <a href={value.href} className="link" target="_blank">{value.name}</a>
+                </Menu.Item>
+              )
+            }
           </SubMenu>
+
           <SubMenu key="about" title={<span><Icon type="user" /><span>About</span></span>}>
-            <Menu.Item key="5">Me</Menu.Item>
+            {
+              about.map((value, key) =>
+                <Menu.Item key={key} >
+                  <a href={value.href} className="link" target="_blank">{value.name}</a>
+                </Menu.Item>
+              )
+            }
           </SubMenu>
         </Menu>
       </div >

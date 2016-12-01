@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 // assets
 import avatar from '../assets/mtt.png'
@@ -40,6 +39,4 @@ class About extends Component {
   }
 }
 
-export default connect(state => ({
-  about: state.about
-}))(About)
+export default About

@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-// components
+import React, { Component, PropTypes } from 'react'
 import Sidebar from '../components/Sidebar'
-import './BaseLayout.less'
+import './App.less'
 
-class BaseLayout extends Component {
+export default class App extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired
+  }
 
   render() {
     return (
@@ -17,6 +17,5 @@ class BaseLayout extends Component {
       </div>
     )
   }
+  
 }
-
-export default connect()(BaseLayout)
