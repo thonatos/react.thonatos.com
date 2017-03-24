@@ -5,12 +5,8 @@ const SubMenu = Menu.SubMenu
 
 export default class Sidebar extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      current: '1'
-    }
+  state = {
+    current: '1'
   }
 
   handleClick = (e) => {
@@ -59,7 +55,7 @@ export default class Sidebar extends Component {
           selectedKeys={[this.state.current]}
           mode="inline"
           style={styles.menu}
-          >
+        >
 
           <SubMenu key="home" title={<span><Icon type="home" /><span>Home</span></span>}>
             {

@@ -5,29 +5,17 @@ class Projects extends Component {
 
   componentDidMount() {
     const { fetchProjects } = this.props
-    fetchProjects('https://api.github.com/users/thonatos/repos')
-  }
-
-  getStyles() {
-    return {
-      projects: {
-        padding: '2em'
-      }
-    }
+    fetchProjects()
   }
 
   render() {
     const { projects } = this.props
-    projects.sort(function (a, b) {
-      let aT = new Date(a.created_at)
-      let bT = new Date(b.created_at)
-      return aT < bT ? 1 : -1
-    })
-    const styles = this.getStyles()
 
     return (
       <Row>
-        <Col span={24} style={styles.projects}>
+        <Col span={24} style={{
+          padding: '2em'
+        }}>
           <Timeline pending={<a href="#">See more</a>}>
             {
               projects.map((obj, index) => {
