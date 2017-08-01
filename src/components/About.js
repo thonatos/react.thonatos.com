@@ -27,6 +27,9 @@ class About extends Component {
                   <li key={index}>
                     <a href={obj.href} target="_blank">
                       <i className="iconfont" dangerouslySetInnerHTML={{ __html: obj.icon }}></i>
+                      <p style={{
+                            textTransform: 'capitalize'
+                      }}>{obj.name}</p>
                     </a>
                   </li>
                 )
